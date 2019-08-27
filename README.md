@@ -20,6 +20,7 @@ pal <- setNames(pal, c("Champion", "Qualified for European Competition", "Qualif
 p <- plot_ly(data = Goals.Assists.La.Liga2, x = ~Individual.Goals, y = ~Individual.Assists, text = ~paste("Player: ", X.U.FEFF.Top.Goalscorer.Assister ,'<br>Team:', Club, '<br>', Percentage*100, "% of Total Team G+A"), color = ~Result, colors = pal)
 
 ggplotly(p)
+p
 
 ```
 
@@ -42,6 +43,7 @@ pal <- setNames(pal, c("Champion", "Qualified for European Competition", "Qualif
 p <- plot_ly(data = Goals.Assists.EPL2, x = ~Individual.Goals, y = ~Individual.Assists, text = ~paste("Player: ", X.U.FEFF.Top.Goalscorer.Assister ,'<br>Team:', Club, '<br>', Percentage*100, "% of Total Team G+A"), color = ~Result, colors = pal)
 
 ggplotly(p)
+p
 
 
 ```
@@ -64,7 +66,7 @@ pal <- setNames(pal, c("Champion", "Qualified for European Competition", "Qualif
 p <- plot_ly(data = Goals.Assists.Ligue.12, x = ~Individual.Goals, y = ~Individual.Assists, text = ~paste("Player: ", X.U.FEFF.Top.Goalscorer.Assister ,'<br>Team:', Club, '<br>', Percentage*100, "% of Total Team G+A"), color = ~Result, colors = pal)
 
 ggplotly(p)
-
+p
 
 ```
 
@@ -84,7 +86,7 @@ pal <- setNames(pal, c("Champion", "Qualified for European Competition", "Qualif
 p <- plot_ly(data = Goals.Assists.Bundesliga2, x = ~Individual.Goals, y = ~Individual.Assists, text = ~paste("Player: ", X.U.FEFF.Top.Goalscorer.Assister ,'<br>Team:', Club, '<br>', Percentage*100, "% of Total Team G+A"), color = ~Result, colors = pal)
 
 ggplotly(p)
-
+p
 
 ```
 
@@ -110,7 +112,7 @@ pal <- setNames(pal, c("Champion", "Qualified for European Competition", "Qualif
 p <- plot_ly(data = Goals.Assists.Serie.A2, x = ~Individual.Goals, y = ~Individual.Assists, text = ~paste("Player: ", X.U.FEFF.Top.Goalscorer.Assister ,'<br>Team:', Club, '<br>', Percentage*100, "% of Total Team G+A"), color = ~Result, colors = pal)
 
 ggplotly(p)
-
+p
 
 ```
 
