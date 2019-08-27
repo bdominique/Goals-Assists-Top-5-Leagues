@@ -21,7 +21,6 @@ p <- plot_ly(data = Goals.Assists.La.Liga2, x = ~Individual.Goals, y = ~Individu
 
 ggplotly(p)
 
-
 ```
 
 It’s no secret that Lionel Messi is Barcelona’s best attacker, but the graph above clearly illustrates just how much of a monster he is. He carries about a third of Barcelona’s offensive creation, which is unheard of at any level in the top 5 leagues. What makes that even more impressive is that Messi is doing this at a championship-contender level, while the players who are even remotely close to him in terms of percentage are doing it at a lower tier. 
