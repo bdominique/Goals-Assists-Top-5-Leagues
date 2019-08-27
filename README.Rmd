@@ -17,12 +17,19 @@ library(plotly)
 pal <- c("blue", "green", "purple", "yellow", "orange", "red")
 pal <- setNames(pal, c("Champion", "Qualified for European Competition", "Qualified for European Competition (Cup Competition)", "Upper Mid-Table", "Lower Mid-Table", "Relegated"))
 
-p <- plot_ly(data = Goals.Assists.La.Liga2, x = ~Individual.Goals, y = ~Individual.Assists, text = ~paste("Player: ", X.U.FEFF.Top.Goalscorer.Assister ,'<br>Team:', Club, '<br>', Percentage*100, "% of Total Team G+A"), color = ~Result, colors = pal)
+x <- list(
+  title = "Goals"
+)
+y <- list(
+  title = "Assists"
+)
+p <- plot_ly(data = Goals.Assists.La.Liga2, x = ~Individual.Goals, y = ~Individual.Assists, text = ~paste("Player: ", X.U.FEFF.Top.Goalscorer.Assister ,'<br>Team:', Club, '<br>', Percentage*100, "% of Total Team G+A"), color = ~Result, colors = pal) %>%
+  layout(title = "Top attacker for each La Liga team", xaxis = x, yaxis = y)
 
 ggplotly(p)
-p
 
-
+options(browser = 'false')
+api_create(p, filename = "La-Liga")
 ```
 
 It’s no secret that Lionel Messi is Barcelona’s best attacker, but the graph above clearly illustrates just how much of a monster he is. He carries about a third of Barcelona’s offensive creation, which is unheard of at any level in the top 5 leagues. What makes that even more impressive is that Messi is doing this at a championship-contender level, while the players who are even remotely close to him in terms of percentage are doing it at a lower tier. 
@@ -41,11 +48,20 @@ library(plotly)
 pal <- c("blue", "green", "purple", "yellow", "orange", "red")
 pal <- setNames(pal, c("Champion", "Qualified for European Competition", "Qualified for European Competition (Cup Competition)", "Upper Mid-Table", "Lower Mid-Table", "Relegated"))
 
-p <- plot_ly(data = Goals.Assists.EPL2, x = ~Individual.Goals, y = ~Individual.Assists, text = ~paste("Player: ", X.U.FEFF.Top.Goalscorer.Assister ,'<br>Team:', Club, '<br>', Percentage*100, "% of Total Team G+A"), color = ~Result, colors = pal)
+x <- list(
+  title = "Goals"
+)
+y <- list(
+  title = "Assists"
+)
+
+p <- plot_ly(data = Goals.Assists.EPL2, x = ~Individual.Goals, y = ~Individual.Assists, text = ~paste("Player: ", X.U.FEFF.Top.Goalscorer.Assister ,'<br>Team:', Club, '<br>', Percentage*100, "% of Total Team G+A"), color = ~Result, colors = pal) %>%
+  layout(title = "Top attacker for each EPL team", xaxis = x, yaxis = y)
 
 ggplotly(p)
-p
 
+options(browser = 'false')
+api_create(p, filename = "EPL")
 ```
 
 The scariest part of Sergio Agüero being the G+A leader for Manchester City is that there’s a very real argument he isn’t even the most important piece of their offense. City have so many different players who can hurt you in the final third that I was a bit surprised to see Agüero top this list but seeing his contribution amount to 18% of City’s total G+A makes sense; no single player carries City’s offense by himself, and this is reflected in that number.
@@ -63,11 +79,20 @@ library(plotly)
 pal <- c("blue", "green", "purple", "yellow", "orange", "red")
 pal <- setNames(pal, c("Champion", "Qualified for European Competition", "Qualified for European Competition (Cup Competition)", "Upper Mid-Table", "Lower Mid-Table", "Relegated"))
 
-p <- plot_ly(data = Goals.Assists.Ligue.12, x = ~Individual.Goals, y = ~Individual.Assists, text = ~paste("Player: ", X.U.FEFF.Top.Goalscorer.Assister ,'<br>Team:', Club, '<br>', Percentage*100, "% of Total Team G+A"), color = ~Result, colors = pal)
+x <- list(
+  title = "Goals"
+)
+y <- list(
+  title = "Assists"
+)
+
+p <- plot_ly(data = Goals.Assists.Ligue.12, x = ~Individual.Goals, y = ~Individual.Assists, text = ~paste("Player: ", X.U.FEFF.Top.Goalscorer.Assister ,'<br>Team:', Club, '<br>', Percentage*100, "% of Total Team G+A"), color = ~Result, colors = pal) %>%
+  layout(title = "Top attacker for each Ligue 1 team", xaxis = x, yaxis = y)
 
 ggplotly(p)
-p
 
+options(browser = 'false')
+api_create(p, filename = "Ligue-1")
 ```
 
 Even at his young age Kylian Mbappé is already putting up Goal numbers that are comparable to Messi’s, although his assists are a bit lacking. 22% of his team’s offense went though him, which sounds about right when you consider how many different players contributed offensively to PSG as they waltzed to the title last season.
@@ -83,11 +108,20 @@ library(plotly)
 pal <- c("blue", "green", "purple", "yellow", "orange", "red")
 pal <- setNames(pal, c("Champion", "Qualified for European Competition", "Qualified for European Competition (Cup Competition)", "Upper Mid-Table", "Lower Mid-Table", "Relegated"))
 
-p <- plot_ly(data = Goals.Assists.Bundesliga2, x = ~Individual.Goals, y = ~Individual.Assists, text = ~paste("Player: ", X.U.FEFF.Top.Goalscorer.Assister ,'<br>Team:', Club, '<br>', Percentage*100, "% of Total Team G+A"), color = ~Result, colors = pal)
+x <- list(
+  title = "Goals"
+)
+y <- list(
+  title = "Assists"
+)
+
+p <- plot_ly(data = Goals.Assists.Bundesliga2, x = ~Individual.Goals, y = ~Individual.Assists, text = ~paste("Player: ", X.U.FEFF.Top.Goalscorer.Assister ,'<br>Team:', Club, '<br>', Percentage*100, "% of Total Team G+A"), color = ~Result, colors = pal) %>%
+  layout(title = "Top attacker for each Bundesliga team", xaxis = x, yaxis = y)
 
 ggplotly(p)
-p
 
+options(browser = 'false')
+api_create(p, filename = "Bundesliga")
 ```
 
 Across the board there is no single player who seems to be carrying his team in Germany. On average a player contributed about to about 18% of their team’s offense with no player having a contribution of above 25%, which at first I thought was because of the lesser amount of games in the Bundesliga (34 compared to 38 in the other 4 leagues). I realized later that rather than affecting the percentages, the 4 less games would affect the total amount that each player/team scored.
@@ -103,17 +137,26 @@ One comparison I found was the similarity between the numbers that the Hazard br
 
 ### Serie A
 ```{r plotly5, fig.width=8, fig.height=6, message = FALSE}
-# Generating a Graph of Seria A's Top Attackers
+# Generating a Graph of Serie A's Top Attackers
 
 library(plotly)
 pal <- c("blue", "green", "purple", "yellow", "orange", "red")
 pal <- setNames(pal, c("Champion", "Qualified for European Competition", "Qualified for European Competition (Cup Competition)", "Upper Mid-Table", "Lower Mid-Table", "Relegated"))
 
-p <- plot_ly(data = Goals.Assists.Serie.A2, x = ~Individual.Goals, y = ~Individual.Assists, text = ~paste("Player: ", X.U.FEFF.Top.Goalscorer.Assister ,'<br>Team:', Club, '<br>', Percentage*100, "% of Total Team G+A"), color = ~Result, colors = pal)
+x <- list(
+  title = "Goals"
+)
+y <- list(
+  title = "Assists"
+)
+
+p <- plot_ly(data = Goals.Assists.Serie.A2, x = ~Individual.Goals, y = ~Individual.Assists, text = ~paste("Player: ", X.U.FEFF.Top.Goalscorer.Assister ,'<br>Team:', Club, '<br>', Percentage*100, "% of Total Team G+A"), color = ~Result, colors = pal) %>%
+  layout(title = "Top attacker for each Serie A team", xaxis = x, yaxis = y)
 
 ggplotly(p)
-p
 
+options(browser = 'false')
+api_create(p, filename = "Serie-A")
 ```
 
 21 league Goals represents Cristiano Ronaldo’s lowest total in about a decade, but combined with his 7 Assists is enough to see him contribute to ¼ of all Juventus league G+A. Juventus have the lowest G+A total of all champions (111) by quite some margin; with no real attackers brought in over the summer, all eyes will be on new manager Maurizio Sarri to raise this number by modifying his predecessor Massimiliano Allegri’s more defensive approach.
