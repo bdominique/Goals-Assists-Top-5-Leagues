@@ -3,7 +3,19 @@
 How does one truly measure the impact of an attacker on their team? While people in the Sports Analytics world would point you to all sorts of advanced metrics (which certainly help with painting a picture of a player), sometimes it’s also helpful to look at the 2 most well known categories: Goals and Assists. As you could tell by the title, this article will look at the best attacker on each team by doing exactly that. For each of the top 5 leagues in the 2018/19 season, I created a dataset that lists that player with the most combined Goals and assists for their team, and then I took that number as a percentage of the team’s total Goals and Assists.  I originally was going to look at the top Goal scorer and Assister for each team separately, but I feel that combining the two categories can give a better picture of who not only excels at one category but can do both jobs well. Teams are also color-coded according to their final position in their respective leagues; what was accomplished by this was examining how teams at all levels of their league table had players who were producing similar G+A percentages, but doing so at different scales of total G+A. For this analysis I will be examining and visualizing the data from each league separately from each other, in order to make the data easier to read and to allow myself to make some observations that might pertain only to a certain league. Teams and players are organized based on how they placed in the 2018-19 season: either Champion, Qualified for European Competition (either through their final league position or by them/another team winning a cup competition), Upper half of the table, Lower half of the table, and finally the relegated teams. If two players tied in their total numbers for G+A for a single team, then they’re listed together  on the graph as a single dot.
 
 ### La Liga
-[La Liga Graph]
+```{r plotly1, fig.width=8, fig.height=6, message = FALSE}
+# Generating a Graph of La Liga's Top Attackers
+
+library(plotly)
+pal <- c("blue", "green", "purple", "yellow", "orange", "red")
+pal <- setNames(pal, c("Champion", "Qualified for European Competition", "Qualified for European Competition (Cup Competition)", "Upper Mid-Table", "Lower Mid-Table", "Relegated"))
+
+p <- plot_ly(data = Goals.Assists.La.Liga2, x = ~Individual.Goals, y = ~Individual.Assists, text = ~paste("Player: ", X.U.FEFF.Top.Goalscorer.Assister ,'<br>Team:', Club, '<br>', Percentage*100, "% of Total Team G+A"), color = ~Result, colors = pal)
+
+ggplotly(p)
+
+
+```
 
 It’s no secret that Lionel Messi is Barcelona’s best attacker, but the graph above clearly illustrates just how much of a monster he is. He carries about a third of Barcelona’s offensive creation, which is unheard of at any level in the top 5 leagues. What makes that even more impressive is that Messi is doing this at a championship-contender level, while the players who are even remotely close to him in terms of percentage are doing it at a lower tier. 
 It’s a shame that one of Karim Benzema’s best seasons in a Real Madrid shirt came during one of their worst years in recent history. The Frenchman proved to be integral to Madrid’s offense in its first season without Cristiano Ronaldo, providing his team with 26% of its total G+A last season.
@@ -14,7 +26,19 @@ Raul de Tomás did very well for a Rayo Vallecano side that was, quite frankly, 
 We end our analysis of La Liga with Real Betis, whose two highest scorers were both midfielders (Lo Celso and Canales). After the loss of Lo Celso and the Acquisition of both Nabil Fekir from Lyon and Borja Iglesias from RCD Espanyol (Iglesias led his team in G+A), it will be interesting to see how the Betis team learn to adapt their offense to two great attackers. They are almost certainly going to be a fun team to watch in La Liga when they’re in the final third. 
 
 ### Premier League
-[EPL Graph]
+```{r plotly2, fig.width=8, fig.height=6, message = FALSE}
+# Generating a Graph of the EPL's Top Attackers
+
+library(plotly)
+pal <- c("blue", "green", "purple", "yellow", "orange", "red")
+pal <- setNames(pal, c("Champion", "Qualified for European Competition", "Qualified for European Competition (Cup Competition)", "Upper Mid-Table", "Lower Mid-Table", "Relegated"))
+
+p <- plot_ly(data = Goals.Assists.EPL2, x = ~Individual.Goals, y = ~Individual.Assists, text = ~paste("Player: ", X.U.FEFF.Top.Goalscorer.Assister ,'<br>Team:', Club, '<br>', Percentage*100, "% of Total Team G+A"), color = ~Result, colors = pal)
+
+ggplotly(p)
+
+
+```
 
 The scariest part of Sergio Agüero being the G+A leader for Manchester City is that there’s a very real argument he isn’t even the most important piece of their offense. City have so many different players who can hurt you in the final third that I was a bit surprised to see Agüero top this list but seeing his contribution amount to 18% of City’s total G+A makes sense; no single player carries City’s offense by himself, and this is reflected in that number.
 Speaking of carrying offenses, allow me to introduce you all to Eden Hazard, formerly of Chelsea. In his final season for the Blues he led them in both Goals (16) and Assists (15), and by some distance in each category. He was the only Chelsea player with Double Digit Goals and only one with Double Digit Assists in the EPL, which really puts into perspective how much value he had to them. To see how they replace the void he left in their offense this season will be… interesting to say the least.
@@ -24,7 +48,19 @@ One standout player in the middle of the table to me Jamie Vardy put up very imp
 The bottom of the EPL table brings us to the perhaps the most troubling team in Europe, certainly in England. Throughout the top 5 leagues, I don’t think that there was a team as poor as Huddersfield in terms of offensive creation. As a team they had a total 34 G+A, with Steve Mounie leading the way with 2 Goals and 3 Assists. 
 
 ### Ligue 1
-[Ligue 1 Graph]
+```{r plotly3, fig.width=8, fig.height=6, message = FALSE}
+# Generating a Graph of Ligue 1's Top Attackers
+
+library(plotly)
+pal <- c("blue", "green", "purple", "yellow", "orange", "red")
+pal <- setNames(pal, c("Champion", "Qualified for European Competition", "Qualified for European Competition (Cup Competition)", "Upper Mid-Table", "Lower Mid-Table", "Relegated"))
+
+p <- plot_ly(data = Goals.Assists.Ligue.12, x = ~Individual.Goals, y = ~Individual.Assists, text = ~paste("Player: ", X.U.FEFF.Top.Goalscorer.Assister ,'<br>Team:', Club, '<br>', Percentage*100, "% of Total Team G+A"), color = ~Result, colors = pal)
+
+ggplotly(p)
+
+
+```
 
 Even at his young age Kylian Mbappé is already putting up Goal numbers that are comparable to Messi’s, although his assists are a bit lacking. 22% of his team’s offense went though him, which sounds about right when you consider how many different players contributed offensively to PSG as they waltzed to the title last season.
 Following Mbappé is Nicolas Pépé of Lille (now Arsenal) and Memphis Depay of Lyon. Pépé is one of the only players who plays for a top team and contributes to his team’s offense at 30% or higher, which puts him within touching distance of Messi (although Pépé’s G+A total is 34, while Messi’s is 49). How Lille recuperate from losing both him and Rafael Leão (to AC Milan) will be interesting to see; when a single player contributes this much to your offense, it’s hard to see it going successfully. Depay was the highest contributor on a much more balanced Lyon team where he contributed 17% of his teams G+A. Lyon is comparable to Valencia in this aspect, although Lyon as a team have a much higher G+A total – 121 compared to Valencia’s 89. In fact, Ligue 1’s top teams were very high in this aspect: PSG, Lille and Lyon combined for 412 total G+A and are the only league besides the EPL (421) to surpass 400 G+A with their top 3 teams.
@@ -32,7 +68,19 @@ One of the strangest names to appear on this list is Kenny Lala of Strausbourg, 
 Despite playing only 19 games this season, the late Emiliano Sala still led Nantes’ offense with a contribution of 19%. 2018-19 was one of Sala’s best in terms of Goals, where he tied his previous two seasons of 12 goals for Nantes but did so with only 19 games (34 in 2016-17 and 36 in 2017-18).
 
 ### Bundesliga
-[BuLi graph]
+```{r plotly4, fig.width=8, fig.height=6, message = FALSE}
+# Generating a Graph of the Bundesliga's Top Attackers
+
+library(plotly)
+pal <- c("blue", "green", "purple", "yellow", "orange", "red")
+pal <- setNames(pal, c("Champion", "Qualified for European Competition", "Qualified for European Competition (Cup Competition)", "Upper Mid-Table", "Lower Mid-Table", "Relegated"))
+
+p <- plot_ly(data = Goals.Assists.Bundesliga2, x = ~Individual.Goals, y = ~Individual.Assists, text = ~paste("Player: ", X.U.FEFF.Top.Goalscorer.Assister ,'<br>Team:', Club, '<br>', Percentage*100, "% of Total Team G+A"), color = ~Result, colors = pal)
+
+ggplotly(p)
+
+
+```
 
 Across the board there is no single player who seems to be carrying his team in Germany. On average a player contributed about to about 18% of their team’s offense with no player having a contribution of above 25%, which at first I thought was because of the lesser amount of games in the Bundesliga (34 compared to 38 in the other 4 leagues). I realized later that rather than affecting the percentages, the 4 less games would affect the total amount that each player/team scored.
 An interesting trend that I started to notice around this time was just how many players benefited from using both Goals and Assists, rather than just goals. Because the percentages of the Bundesliga are so low, this means that each team most likely have a more creative player as their top contributor, where other teams in other leagues might have pure Goal scorers. Here are a couple players who made this list because I decided to include both Goals and Assists together (This is not every single example but I believe the Bundesliga has either the most or the second most who benefit from this):
@@ -46,7 +94,19 @@ One comparison I found was the similarity between the numbers that the Hazard br
 
 
 ### Serie A
-[graph]
+```{r plotly5, fig.width=8, fig.height=6, message = FALSE}
+# Generating a Graph of Seria A's Top Attackers
+
+library(plotly)
+pal <- c("blue", "green", "purple", "yellow", "orange", "red")
+pal <- setNames(pal, c("Champion", "Qualified for European Competition", "Qualified for European Competition (Cup Competition)", "Upper Mid-Table", "Lower Mid-Table", "Relegated"))
+
+p <- plot_ly(data = Goals.Assists.Serie.A2, x = ~Individual.Goals, y = ~Individual.Assists, text = ~paste("Player: ", X.U.FEFF.Top.Goalscorer.Assister ,'<br>Team:', Club, '<br>', Percentage*100, "% of Total Team G+A"), color = ~Result, colors = pal)
+
+ggplotly(p)
+
+
+```
 
 21 league Goals represents Cristiano Ronaldo’s lowest total in about a decade, but combined with his 7 Assists is enough to see him contribute to ¼ of all Juventus league G+A. Juventus have the lowest G+A total of all champions (111) by quite some margin; with no real attackers brought in over the summer, all eyes will be on new manager Maurizio Sarri to raise this number by modifying his predecessor Massimiliano Allegri’s more defensive approach.
 It didn’t surprise me to see Mauro Icardi‘s  name on this list for Inter Milan, but what did is the fact that he only contributed to 16% of his team’s total G+A. For a player that has put up stellar numbers in the seasons prior (29 league goals in 2017-18, 24 in 2016-17), it’s a bit weird to see him dip this low. But when you consider the number of off the field issues that Icardi faced (some of his own doing, some not) it begins to make more sense. New manager Antonio Conte will need him at his very best if Inter aim to dethrone Juventus in the league.
